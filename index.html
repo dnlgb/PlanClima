@@ -4,26 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Clima ideal</h1>
-    <main>
+    <main class="seccion-busq">
         <h2>Elige una ciudad</h2>
-        <input type="text" id="cityInput" placeholder="ciudad"> 
-        <button id="buscarC">Buscar</button>
+        <input type="search" id="cityInput" placeholder="Escribe una ciudad"> 
+
+        <label for="planes">Selecciona un plan: </label>
+        <select id="planes">
+            <option value="Playa">Playa</option>
+            <option value="Caminar">Caminar</option>
+            <option value="Picnic">Picnic</option>
+            <option value="Cicla">Cicla</option>
+            <option value="Familiar">Familiar</option>
+        </select>
+
+            <button id="buscar">Buscar</button>
     </main>
-    <section>
-        <h3>Resultado:</h3>
-            <div class="Ciudad_resultado">
-                <p>ciudad:</p>
-                
-            </div>
-            
-            <div class="Pronostico">
-                <h3>Pronostico</h3>
-                <p>Score:</p>
-                <p>Recomendaciones: Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta tempora quibusdam natus reiciendis consequatur doloribus in quas voluptatibus dolorem minima suscipit cum saepe maiores itaque repellendus nihil ex, ducimus placeat?</p>
+    <section class="contenedor-resultados">
+
+        <div class="Ciudad-resultado">
+            <h3>Resultado</h3>
+            <p>Ciudad:</p>
         </div>
+    
+        <div class="pronostico">
+            <h3>Pronóstico</h3>
+            <p>Score:</p>
+            <p>Recomendaciones:</p>
+        </div>
+    
     </section>
 
 
