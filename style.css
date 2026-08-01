@@ -84,7 +84,7 @@ h1{
 .Ciudad_seleccionada p:first-of-type {
     margin: 8px 0;
     font-weight: bold;
-    color: #555;
+    color: #2d2c2c;
     font-size: .95rem;
 }
 .Ciudad_seleccionada p {

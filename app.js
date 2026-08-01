@@ -25,11 +25,16 @@ const contenedorScore = document.querySelector(".pronostico")
                             fetch(`https://api.open-meteo.com/v1/forecast?latitude=${ciudad.latitude}&longitude=${ciudad.longitude}&hourly=temperature_2m,relative_humidity_2m,precipitation_probability&timezone=auto`)
                             .then((response) => response.json())
                             .then((dataWeather) => {
-                                const temperatura = dataWeather.hourly.temperature_2m[0];
-                                const lluvia = dataWeather.hourly.precipitation_probability[0];
-                                const humedad = dataWeather.hourly.relative_humidity_2m[0];
-                                const Card_Clima = document.createElement("div")
+                                const ahora = new Date();
+                                const ahoraya = ahora.toLocaleDateString('sv-SE') + 'T' + String(ahora.getHours()).padStart(2, '0') + ':00';
+                                const indice = dataWeather.hourly.time.indexOf(ahoraya);
+                                const temperatura = dataWeather.hourly.temperature_2m[indice];
+                                const lluvia = dataWeather.hourly.precipitation_probability[indice];
+                                const humedad = dataWeather.hourly.relative_humidity_2m[indice];
+                                
 
+                                const Card_Clima = document.createElement("div")
+                                
                                 Card_Clima.innerHTML = 
                                     `
                                         <h2>${ciudad.name}</h2>
@@ -39,26 +44,104 @@ const contenedorScore = document.querySelector(".pronostico")
                                         <p>temperatura: ${temperatura}°C</p> 
                                         <p>Humedad: ${humedad}%</p>
                                         <p>Probabilidad de lluvia: ${lluvia }% </p>
+                                        <p><strong>Score:</strong> 85/100</p>
+                                        <p><strong>Recomendación:</strong> Día de playa adecuado, disfruta.</p>
                                     `
                                 Card_Clima.classList.add("Ciudad_seleccionada")
                                 contenedorScore.textContent = "";
                                 contenedorScore.append(Card_Clima)
 
-                            if (planesUser == "Playa" && temperatura >= 24 && lluvia < 40){
-                                console.log("dia de playa adecuado, disfruta")
+                            let score = 100;
+                            let recomendacion = "";
+                            if (planesUser === "Playa"){
+                                if (temperatura < 24){ 
+                                    score -= 30;}
+                                if (lluvia > 40){
+                                    score -= 40;}
+                                if (humedad > 80){
+                                    score -= 20;}
 
-                            }else if(planesUser == "Caminar" && temperatura < 29 && lluvia <= 20){
-                                console.log("A caminar jajaja....:D")
-
-                            }else if(planesUser == "Picnic" && temperatura >= 15 && lluvia <= 30){
-                                console.log("Disfruta el picnic ")
-                            }else if(planesUser == "Cicla" && temperatura <= 35 && lluvia <= 70){
-                                console.log("A darle a esas piernas")
-                            }else if(planesUser == "Familiar" && temperatura >= 1 && lluvia >= 80){
-                                console.log("Descansa con la familia hoy, amigo")
-                            }else{
-                                console.log(`No es un buen dia para ${planesUser}, mejor elige otra actividad`)
+                                    console.log(score)
+                                if(score >= 65){
+                                    recomendacion = "dia de playa adecuado, disfruta";}
+                                    else if(score >= 50){
+                                        recomendacion = "dia de playa no tan adecuado, pero puedes disfrutar";
+                                    
+                                    }else{ 
+                                            recomendacion = " mejor quedate en casa o elige otro plan";}
                             }
+
+                            else if (planesUser === "Caminar") {
+                                if (temperatura < 15){ 
+                                    score -= 30;}
+                                if (lluvia > 50) {
+                                    score -= 40;}
+                                if (humedad > 70) {
+                                    score -= 20;}
+
+                                console.log(score)
+                                    if(score >= 65){
+                                    recomendacion = "dia adecuado, disfruta";
+                                    }
+                                    else if(score >= 40){
+                                        recomendacion = "dia no tan adecuado, sal con precaucion";
+                                        }
+                                    
+                                    else{ 
+                                        recomendacion = " mejor quedate en casa o elige otro plan";}
+                                    
+                            }
+                            else if (planesUser === "Picnic") {
+                                if (temperatura < 17){ 
+                                    score -= 25;}
+                                if (lluvia > 60) {
+                                    score -= 5;}
+                                if (humedad > 70) {
+                                    score -= 10;}
+                                    console.log(score)
+                                    if(score >= 70){
+                                    recomendacion = "dia adecuado, disfruta";
+                                    console.log(recomendacion) }
+                                    else if(score >= 50){
+                                        recomendacion = "dia no tan adecuado, sal con precaucion";
+                                        }
+                                    
+                                    else{ recomendacion = " mejor quedate en casa o elige otro plan";
+                                        }
+                            }
+                            else if (planesUser === "Cicla") {
+                                if (temperatura < 10) {
+                                    score -= 30;}
+                                if (lluvia > 20) {
+                                    score -= 20;}
+                                if (humedad > 60){
+                                    score -= 60;}
+                                console.log(score)
+                                    if(score >= 65){
+                                    recomendacion = "dia adecuado, disfruta";
+                                    }
+                                    else if(score >= 40){
+                                        recomendacion = "dia no tan adecuado, sal con precaucion";
+                                        }
+                                    
+                                    else{ recomendacion = " mejor quedate en casa o elige otro plan";
+                                        }
+                            }
+                            else if (planesUser === "Familiar") {
+                                if (temperatura < 1){ 
+                                    score -= 30;}
+                                if (lluvia > 61) {
+                                    score -= 40;}
+                                if (humedad > 75) {
+                                    score -= 20;}
+                            
+                            console.log(score)
+                                    if(score >= 50){
+                                    recomendacion = "dia adecuado, disfruta";
+                                    }
+                                    
+                                    else{ recomendacion = "elige otro plan, si quieres salir con tu familia";}
+                                }    
                             })
                     })
             }
