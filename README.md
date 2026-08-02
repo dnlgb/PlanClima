@@ -1,4 +1,4 @@
-#PlanClima
+## PlanClima
 
 Una aplicación web que recomienda actividades según el clima de una ciudad.
 
@@ -11,7 +11,7 @@ Una aplicación web que recomienda actividades según el clima de una ciudad.
 cambiarê el estilo de letra jajaj
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 - Buscar ciudades.
 - Consultar el clima actual usando Open-Meteo.
@@ -21,7 +21,7 @@ cambiarê el estilo de letra jajaj
 
 ---
 
-## 🛠️ Tecnologías
+## Tecnologías
 
 - HTML
 - CSS
@@ -45,7 +45,7 @@ También aprendí a organizar un proyecto un poco más grande de lo que había h
 
 ---
 
-##Posibles mejoras
+## Posibles mejoras
 
 - Responsive para móviles.
 - Más actividades.
@@ -54,7 +54,7 @@ También aprendí a organizar un proyecto un poco más grande de lo que había h
 
 ---
 
-## ▶️ Cómo ejecutarlo
+## Cómo ejecutarlo
 
 Solo descarga el proyecto y abre `index.html`.
 
