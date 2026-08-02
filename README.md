@@ -7,8 +7,7 @@ Una aplicación web que recomienda actividades según el clima de una ciudad.
 ## Vista previa
 <img width="2162" height="1584" alt="image" src="https://github.com/user-attachments/assets/31286019-ddc9-4219-b37d-40c9bccf40aa" />
 
-
-cambiarê el estilo de letra jajaj
+    cambiarê el estilo de letra jajaj
 ---
 
 ## Funcionalidades
