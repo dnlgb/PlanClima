@@ -10,7 +10,7 @@ botonB.addEventListener("click", function () {
     const planesUser = inputPlan.value;
     contenedor.textContent = "";
 
-    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${ciudadUser}&count=5&language=es&format=json`)
+    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${ciudadUser}&count=4&language=es&format=json`)
         .then((response) => response.json())
         .then((data) => {
             for (let ciudad of data.results) {
@@ -46,11 +46,11 @@ botonB.addEventListener("click", function () {
 
                                 console.log(score);
                                 if (score >= 65) {
-                                    recomendacion = "dia de playa adecuado, disfruta";
+                                    recomendacion = "Dia de playa adecuado, disfruta";
                                 } else if (score >= 50) {
-                                    recomendacion = "dia de playa no tan adecuado, pero puedes disfrutar";
+                                    recomendacion = "Dia de playa no tan adecuado, pero puedes disfrutar";
                                 } else {
-                                    recomendacion = " mejor quedate en casa o elige otro plan";
+                                    recomendacion = " Mejor quedate en casa o elige otro plan";
                                 }
                             } else if (planesUser === "Caminar") {
                                 if (temperatura < 15) {
@@ -64,11 +64,11 @@ botonB.addEventListener("click", function () {
                                 }
 
                                 if (score >= 65) {
-                                    recomendacion = "dia adecuado, disfruta";
+                                    recomendacion = "Dia adecuado, disfruta";
                                 } else if (score >= 40) {
-                                    recomendacion = "dia no tan adecuado, sal con precaucion";
+                                    recomendacion = "Dia no tan adecuado, sal con precaucion";
                                 } else {
-                                    recomendacion = " mejor quedate en casa o elige otro plan";
+                                    recomendacion = " Mejor quedate en casa o elige otro plan";
                                 }
                             } else if (planesUser === "Picnic") {
                                 if (temperatura < 17) {
@@ -81,11 +81,11 @@ botonB.addEventListener("click", function () {
                                     score -= 10;
                                 }
                                 if (score >= 70) {
-                                    recomendacion = "dia adecuado, disfruta";
+                                    recomendacion = "Dia adecuado, disfruta";
                                 } else if (score >= 50) {
-                                    recomendacion = "dia no tan adecuado, sal con precaucion";
+                                    recomendacion = "Dia no tan adecuado, sal con precaucion";
                                 } else {
-                                    recomendacion = " mejor quedate en casa o elige otro plan";
+                                    recomendacion = " Mejor quedate en casa o elige otro plan";
                                 }
                             } else if (planesUser === "Cicla") {
                                 if (temperatura < 10) {
@@ -98,11 +98,11 @@ botonB.addEventListener("click", function () {
                                     score -= 60;
                                 }
                                 if (score >= 65) {
-                                    recomendacion = "dia adecuado, disfruta";
+                                    recomendacion = "Dia adecuado, disfruta";
                                 } else if (score >= 40) {
-                                    recomendacion = "dia no tan adecuado, sal con precaucion";
+                                    recomendacion = "Dia no tan adecuado, sal con precaucion";
                                 } else {
-                                    recomendacion = " mejor quedate en casa o elige otro plan";
+                                    recomendacion = " Mejor quedate en casa o elige otro plan";
                                 }
                             } else if (planesUser === "Familiar") {
                                 if (temperatura < 1) {
@@ -116,9 +116,9 @@ botonB.addEventListener("click", function () {
                                 }
 
                                 if (score >= 50) {
-                                    recomendacion = "dia adecuado, disfruta";
+                                    recomendacion = "Dia adecuado, disfruta";
                                 } else {
-                                    recomendacion = "elige otro plan, si quieres salir con tu familia";
+                                    recomendacion = "Elige otro plan, si quieres salir con tu familia";
                                 }
                             }
 
@@ -130,7 +130,8 @@ botonB.addEventListener("click", function () {
                                         <p><i data-lucide="droplets"></i>Humedad: ${humedad}%</p>
                                         <p><i data-lucide="cloud-rain"></i>Probabilidad de lluvia: ${lluvia}% </p>
                                         <p><i data-lucide="star"></i> <strong>Score:</strong> ${score}/100</p>
-                                        <p><i data-lucide="lightbulb"></i><strong>Recomendación:</strong> ${recomendacion}</p>
+                                        <p><i data-lucide="lightbulb"></i><strong>Recomendación:</strong></p>
+                                        <p class="recomendacion_Text">${recomendacion}</p>
                                     `;
                             Card_Clima.classList.add("Ciudad_seleccionada");
                             contenedorScore.textContent = "";
